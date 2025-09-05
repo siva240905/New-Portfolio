@@ -15,6 +15,46 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+	  <style>
+        body {
+            margin: 0;
+            background: black;
+            overflow: hidden;
+        }
+        .firefly {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgb(8, 209, 28);
+            border-radius: 50%;
+            animation: move 5s infinite ease-in-out;
+        }
+        @keyframes move {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(100px,100px);
+                opacity: 1;
+            }
+        }
+        .circle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fade 1s forwards;
+        }
+        @keyframes fade {
+            to {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+        </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	  
@@ -367,6 +407,25 @@ Currently pursuing B.Tech in Information Technology at VSB College of Engineerin
         
       </div>
     </footer>
+		  <script>
+        for(let i=0;i<30;i++){
+            let f = document.createElement('div')
+            f.className = 'firefly'
+            f.style.top = Math.random() * window.innerHeight + 'px'
+            f.style.left = Math.random() * window.innerWidth + 'px'
+            f.style.animationDelay = (Math.random() * 5) + 's'
+            document.body.appendChild(f)
+        }
+        document.addEventListener('mousemove', (e) => {
+           let c = document.createElement('div')
+           c.className = 'circle'
+           c.style.left = e.pageX + 'px'
+              c.style.top = e.pageY + 'px'
+              document.body.appendChild(c)
+              setTimeout(() => 
+                c.remove(),1000)
+            });
+    </script>
     
   
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
